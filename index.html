@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js'
+    integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ=='
+    crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="./css/index.css">
+  <title>PicSee面試</title>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <input v-model="inputText" placeholder="輸入網址" type="text">
+    <button @click="addText">轉換</button>
+    <div class="card">
+      <ul>
+        <li v-for=" item in textArray ">{{item.title}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        inputText: "",
+        textArray: []
+      },
+      methods: {
+        addText: function () {
+          let value = this.inputText.trim()
+          if (!value) {
+            return
+          }
+          this.textArray.push({
+            title: value,
+          })
+          this.inputText = ''
+
+        }
+      },
+      mounted() {
+
+      }
+    })
+  </script>
+
+</body>
+
+</html>
